@@ -39,7 +39,7 @@ public class CalendarView extends LinearLayout
     private Calendar currentDate = Calendar.getInstance();
 
     //event handling
-    private EventHandler eventHandler = null;
+    private OnDayLongClickListener onDayLongClickListener = null;
 
     // internal components
     private LinearLayout header;
@@ -149,10 +149,10 @@ public class CalendarView extends LinearLayout
             public boolean onItemLongClick(AdapterView<?> view, View cell, int position, long id)
             {
                 // handle long-press
-                if (eventHandler == null)
+                if (onDayLongClickListener == null)
                     return false;
 
-                eventHandler.onDayLongPress((Date)view.getItemAtPosition(position));
+                onDayLongClickListener.onDayLongClick((Date)view.getItemAtPosition(position));
                 return true;
             }
         });
@@ -278,17 +278,17 @@ public class CalendarView extends LinearLayout
     /**
      * Assign event handler to be passed needed events
      */
-    public void setEventHandler(EventHandler eventHandler)
+    public void setOnDayLongClickListener(OnDayLongClickListener l)
     {
-        this.eventHandler = eventHandler;
+        this.onDayLongClickListener = l;
     }
 
     /**
      * This interface defines what events to be reported to
      * the outside world
      */
-    public interface EventHandler
+    public interface OnDayLongClickListener
     {
-        void onDayLongPress(Date date);
+        void onDayLongClick(Date date);
     }
 }

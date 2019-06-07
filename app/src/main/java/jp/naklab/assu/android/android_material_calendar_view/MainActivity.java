@@ -12,9 +12,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         calendarView = findViewById(R.id.calendar_view);
-        calendarView.setEventHandler(new CalendarView.EventHandler() {
+        calendarView.setOnDayLongClickListener(new CalendarView.OnDayLongClickListener() {
             @Override
-            public void onDayLongPress(Date date) {
+            public void onDayLongClick(Date date) {
 
             }
         });
