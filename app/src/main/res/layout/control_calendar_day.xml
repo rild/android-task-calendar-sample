@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:minHeight="35dp"
-	android:gravity="center"
-	android:textAppearance="@android:style/TextAppearance.Medium"
-	android:textAlignment="center"
-	android:text="00"
-	android:background="@drawable/reminder"/>
+	android:orientation="vertical">
+
+	<TextView
+		android:id="@+id/textview_day"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:minHeight="35dp"
+		android:gravity="center"
+		android:textAppearance="@android:style/TextAppearance.Medium"
+		android:textAlignment="center"
+		android:text="00" />
+
+	<ImageView
+		android:id="@+id/imageview_eventtag"
+		android:layout_width="match_parent"
+		android:layout_height="8dp" />
+
+	<TextView
+		android:id="@+id/textview_weight"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:textSize="8sp"
+		android:textAppearance="@android:style/TextAppearance.Medium"
+		android:textAlignment="center"
+		android:text="" />
+
+</LinearLayout>
