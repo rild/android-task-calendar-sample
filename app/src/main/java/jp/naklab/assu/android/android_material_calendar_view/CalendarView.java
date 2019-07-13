@@ -41,6 +41,7 @@ public class CalendarView extends LinearLayout {
 
     //event handling
     private OnDayLongClickListener onDayLongClickListener = null;
+    private OnDayClickListener onDayClickListener = null;
 
     // internal components
     private LinearLayout header;
@@ -141,6 +142,15 @@ public class CalendarView extends LinearLayout {
 
                 onDayLongClickListener.onDayLongClick((Date) view.getItemAtPosition(position));
                 return true;
+            }
+        });
+
+        // 日付がクリックされた時の処理
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> view, View cell, int position, long id) {
+                if (onDayClickListener == null) return;
+                onDayClickListener.onDayClick((Date) view.getItemAtPosition(position));
             }
         });
     }
@@ -320,11 +330,19 @@ public class CalendarView extends LinearLayout {
         this.onDayLongClickListener = l;
     }
 
+    public void setOnDayClickListener(OnDayClickListener onDayClickListener) {
+        this.onDayClickListener = onDayClickListener;
+    }
+
     /**
      * This interface defines what events to be reported to
      * the outside world
      */
     public interface OnDayLongClickListener {
         void onDayLongClick(Date date);
+    }
+
+    public interface OnDayClickListener {
+        void onDayClick(Date date);
     }
 }
